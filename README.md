@@ -1,5 +1,16 @@
 # **LectureSlice**
 
+> ⚙️ 本项目依赖 `ffmpeg` 工具：
+> 
+> - **macOS** 用户推荐通过 [Homebrew](https://brew.sh) 安装：
+>   ```bash
+>   brew install ffmpeg
+>   ```
+>   Apple Silicon（ARM）用户注意：ffmpeg 并无官方 ARM 原生版本，但 Homebrew 安装的 x86_64 版本可通过 Rosetta 自动转译运行。
+> 
+> - **Windows** 用户请手动安装并将 ffmpeg 路径加入系统环境变量。参考：https://ffmpeg.org/download.html
+
+
 ## **项目介绍**
 LectureSlice 是一个分阶段文本处理管道，旨在将视频讲座内容自动转录、语义切片、智能翻译并最终整理为高质量的 Markdown 文档。
 
@@ -61,5 +72,4 @@ data/5_markdowns/
 每个合并文件对应一个处理子目录的完整讲义 Markdown 结果。
 
 ## 预期更新
-1. 根据语义，切片更灵活
-2. 实现一键转化
+- 通过 LLM 优化切片逻辑：使文本段落切分在尽量不破坏原意的前提下更具层次感与表达连续性。
