@@ -2,4 +2,4 @@
 .DS_Store
 
 # 忽略 data/ 下所有 history 子文件夹及其内容
-data/**/history/
+# data/**/history/
