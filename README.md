@@ -59,3 +59,7 @@ python scripts/4_markdown_generator.py    # 合并为完整 Markdown
 data/5_markdowns/
 ```
 每个合并文件对应一个处理子目录的完整讲义 Markdown 结果。
+
+## 预期更新
+1. 根据语义，切片更灵活
+2. 实现一键转化
