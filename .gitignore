@@ -6,3 +6,6 @@ data/**/history/
 
 # 但保留 history 文件夹中的 .gitkeep 文件
 !data/**/history/.gitkeep
+
+.env
+

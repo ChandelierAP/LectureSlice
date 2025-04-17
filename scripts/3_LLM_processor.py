@@ -3,6 +3,8 @@ import shutil
 import time
 from openai import OpenAI
 from tqdm import tqdm  # 用于显示进度条
+from dotenv import load_dotenv
+load_dotenv()
 
 # 设置项目路径（项目根目录为 base_dir）
 base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
@@ -11,14 +13,8 @@ trans_folder = os.path.join(base_dir, "data", "4_outputs")  # 输出文件夹路
 history_folder = os.path.join(base_dir, "data", "3_slices", "history")  # 历史文件夹路径
 
 # 多个 API Key
-API_KEYS = [
-    "sk-fce47cf50f0a442e86ab5bd309cd4494",
-    "sk-a38aec1e02ff4a80af69a8ad0039658f",
-    "sk-49b66743497748748e4433e8703f6508",
-    "sk-61ca33584f364d72a6153b5fa3502ed8",
-    "sk-b30e94f280014aa5a5c400c25f36ce2f",
-]
-BASE_URL = "https://api.deepseek.com"
+API_KEYS = os.getenv("DEEPSEEK_API_KEYS", "").split(",")
+BASE_URL = os.getenv("LLM_BASE_URL", "https://api.deepseek.com")
 
 # 当前 key 索引
 api_key_index = 0
@@ -58,7 +54,7 @@ def process_files_with_retry(subfolder):
                 try:
                     # 发送API请求
                     response = client.chat.completions.create(
-                        model="deepseek-chat",
+                        model=os.getenv("LLM_MODEL", "deepseek-chat"),
                         messages=[
                             {"role": "system", "content": Prompt},
                             {"role": "user", "content": file_content},
